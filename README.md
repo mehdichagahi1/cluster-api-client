@@ -182,4 +182,3 @@ The tests are unit tests; they model node state, transient failures, ambiguous t
 successful rollback, failed rollback, idempotency, and inconsistent preflight state. No
 cluster implementation or end-to-end environment is included, as requested by the
 challenge.
-

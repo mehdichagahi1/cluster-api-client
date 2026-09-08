@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools==75.8.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cluster-api-client"
+version = "0.1.0"
+description = "Reliable compensating client for a multi-node group API"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["httpx==0.28.1"]
+
+[project.optional-dependencies]
+dev = [
+    "setuptools==75.8.2",
+    "wheel==0.45.1",
+    "pytest==8.3.5",
+    "pytest-asyncio==0.25.3",
+    "pytest-cov==6.0.0",
+    "ruff==0.9.10",
+]
+
+[project.scripts]
+cluster-api-client = "cluster_api_client.cli:main"
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+asyncio_mode = "strict"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.coverage.run]
+omit = ["src/cluster_api_client/__main__.py"]
